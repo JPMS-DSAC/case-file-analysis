@@ -1,0 +1,140 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>{% block title %} Preliminary Case File Analysis {% endblock %}</h1>
+<p> Regulation 15G </p>
+*15G. Penalty for insider trading.—If any insider who,—
+
+(i) either on his own behalf or on behalf of any other person, deals in securities of a body corporate listed on any stock exchange on the basis of any unpublished price sensitive information; or
+
+(ii) communicates any unpublished price sensitive informa­tion to any person, with or without his request for such informa­tion except as required in the ordinary course of business or under any law; or
+
+(iii) counsels, or procures for any other person to deal in any securities of any body corporate on the basis of unpub­lished price sensitive information, shall be liable to a penalty 1[of twenty-five crore rupees or three times the amount of profits made out of insider trading, whichever is higher].
+{% set range = range(cases|length, 8) %}
+<div>
+    <div class="left-box">
+        <div class="game-board">
+            {% for case in cases %}
+            {% if loop.index  == 5%}
+            <div class="box" style="background-color: burlywood; color: black">
+                <p class="j"> 
+                *15G. Penalty for insider trading.—If any insider who,—
+                <b class="pink" onclick="evtEllipse(this)">&hellip;</b>
+                <span class="hide" onclick="spanEllipse(this)">
+(i) either on his own behalf or on behalf of any other person, deals in securities of a body corporate listed on any stock exchange on the basis of any unpublished price sensitive information; or
+
+(ii) communicates any unpublished price sensitive informa­tion to any person, with or without his request for such informa­tion except as required in the ordinary course of business or under any law; or
+
+(iii) counsels, or procures for any other person to deal in any securities of any body corporate on the basis of unpub­lished price sensitive information, shall be liable to a penalty 1[of twenty-five crore rupees or three times the amount of profits made out of insider trading, whichever is higher].
+</p>
+            </div>
+            {% endif %}
+
+            <div class="box">
+                <!-- <div class="blocky"> -->
+		<div id="wrapper"> 
+			<div id="inner1">
+                    <a href="{{ url_for('case_analysis',case_file_id = case['id']) }}"> 
+                    <p class="j">{{ case['title'][0:50] }}  
+                        <b class="pink" onclick="evtEllipse(this)">&hellip;</b>
+                        <span class="hide" onclick="spanEllipse(this)">
+                            {{ case['title'][50:] }}
+                        </p>
+                    </a> 
+			</div>
+
+                <!-- </div> -->
+              
+                <!-- <div class="blocky"> -->
+		<div id="inner2">
+
+
+			<b  onclick="evtEllipse(this)">
+		
+			<p class="j"> {{ case['display_content'][0:50] }}
+			</b>
+
+                        <span class="hide" onclick="spanEllipse(this)">
+                            {{ case['display_content'] }}
+                    </p>
+                </a>
+		</div>
+		</div>
+                <!-- </div> -->
+
+
+            </div>
+            {% endfor %}
+            {% for val in range %}
+            {% if val == 4%}
+            <div class="box">
+                <div class="box" style="background-color: burlywood; color: black">
+                <p class="j"> 
+                *15G. Penalty for insider trading.—If any insider who,—
+                <b class="pink" onclick="evtEllipse(this)">&hellip;</b>
+                <span class="hide" onclick="spanEllipse(this)">
+(i) either on his own behalf or on behalf of any other person, deals in securities of a body corporate listed on any stock exchange on the basis of any unpublished price sensitive information; or
+
+(ii) communicates any unpublished price sensitive informa­tion to any person, with or without his request for such informa­tion except as required in the ordinary course of business or under any law; or
+
+(iii) counsels, or procures for any other person to deal in any securities of any body corporate on the basis of unpub­lished price sensitive information, shall be liable to a penalty 1[of twenty-five crore rupees or three times the amount of profits made out of insider trading, whichever is higher].
+</p>
+            </div>
+            </div>
+            {% endif %}
+            <div class="box">
+                <p> - </p>
+            </div>
+
+            {% endfor %}
+
+        </div>
+
+
+
+    </div>
+</div>
+
+<div class="right-box">
+
+   <a href="{{ url_for('lawyer', case_id = post_id, case_offset = case_offset) }}"> </a>
+   <br> 
+   <a href="{{ url_for('lawyer', case_id = post_id, case_offset = case_offset) }}"> Lawyers Perspective</a>
+<br>
+   <a href="{{ url_for('sebi', case_id = post_id, case_offset = case_offset) }}"> SEBI Perspective</a>
+   <br> 
+
+   <a href="{{ url_for('judge', case_id = post_id, case_offset = case_offset) }}"> Judge Perspective</a>
+   <br> 
+
+
+</div>
+
+
+
+<div class="bottom-box">
+    {% if case_offset - 8 > -1 %}
+    <button type="button" class="btn btn-secondary"
+        onclick="window.location.href='{{ url_for( 'getXCases' , post_id = post_id, case_offset = case_offset - 8 ) }}'">Prev</button>
+    {% endif %}
+    {% if cases|length == 8 %}
+    <button type="button" class="btn btn-primary"
+        onclick="window.location.href='{{ url_for( 'getXCases' , post_id = post_id, case_offset = case_offset + 8 ) }}'">Next</button>
+    {% endif %}
+</div>
+
+
+<script>
+    // For: http://www.webdeveloper.com/forum/showthread.php?364215-Show-only-first-line-of-a-paragraph&p=1508263#post1508263
+    function evtEllipse(info) {
+        info.nextElementSibling.classList.toggle('hide');
+        info.classList.toggle('hide');
+    }
+    function spanEllipse(info) {
+        info.classList.toggle('hide');
+        info.previousElementSibling.classList.toggle('hide')
+    }
+</script>
+
+
+{% endblock %}

@@ -1,0 +1,6 @@
+- [X] Change the name
+- [X] Add About section including the lawyer tag information 
+- [X] Change the colour of the regulation box 
+- [ ] Add the different perspective 
+- [X] Make case file information expand onto a new tab 
+- [ ] Make case file raw text avaialble 

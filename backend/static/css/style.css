@@ -1,0 +1,88 @@
+
+.game-board
+{
+	margin: 2em auto;
+  background-color: lightgoldenrodyellow;
+  color: darkorange;
+  border: 6px solid black;
+  border-radius: 10px;
+  display: grid;
+  
+	grid-template: repeat(3, 1fr) / repeat(3, 1fr);
+}
+
+.box
+{
+  border: 2px solid black;
+  border-radius: 2px;
+  font-family: Helvetica;
+  font-size: 1em;
+  display: flex;
+  overflow: auto;
+
+
+}
+
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid black;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: lightblue;
+}
+
+h2 {
+  text-align: left;
+}
+
+h3 {
+  text-align: center;
+}
+.left-box{
+  display: block;
+  width: 50%;
+  float: left;
+}
+.right-box{
+  display: block;
+  margin: 2em 3em;
+  float: right;
+
+}
+.bottom-box{
+  margin: 2em 3em;
+  position: absolute;
+  bottom: 40px;
+
+}
+
+.j { width: 30em; text-align: left; }
+.hide { display: none; }
+.pink { background-color: wheat;  color: brown; }
+b, span { cursor: pointer; }
+
+.blocky {
+  display: block;
+}
+
+.inner1 {
+	float: left;
+}
+.inner2 {
+	float: left;
+	clear: left;
+}
+.wrapper {
+	margin-left:auto;
+	margin-right:auto;
+	height:auto;
+	width:auto;
+}

@@ -1,0 +1,8 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2>{% block title %} {{ case['title'] }} {% endblock %}</h2>
+    {% for sent in  case['content'].split('\n') %}
+        <p>{{ sent }}</p>
+    {% endfor %}
+{% endblock %}

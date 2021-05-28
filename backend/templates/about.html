@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>{% block title %} Preliminary case file analysis {% endblock %}</h1>
+<p>
+    Case files and adjudication orders have a lot of information that are not present in the regulations. These are
+    often used as precedents when a similar situation arises, and thus for any downstream task such as penatly
+    prediction it becomes important to understand and extract the information present in the case files. Similarly,
+    regulations are also explored through the usage of case files which lets you know the scope of the regulations and
+    how and where it is applied. Thus we have two different knowledge bases: regulations and case files, and it becomes necessary for systems to leverage this information. </p>
+<p>
+    In this webapp, we visualise the different case files and adjudication orders associated with each regulation.
+    Based off of Swati's eariler work on understanding case files, we have annotated and built systems to tag the case files according the following given tags
+</p>
+   
+<ul>
+    <li> Material fact </li>
+    <li> Vioaltion </li>
+    <li> Prodcedural fact </li>
+    <li> Allegations </li>
+    <li> Issues framed </li>
+    <li> Statuatory fact </li>
+    <li> Defendent claim </li>
+    <li> Subj observation </li>
+    <li> Rel fact </li>
+    <li> Penalty </li>
+</ul>
+
+We provide a focussed view of the case file where we only show parts of the case files that are likely to be relevant for legal teams based. 
+
+We explore the different perspectives of the stakeholders involved.
+<p> Lawyers are the people arguing on behalf of the comapny against the SEBI and their arguments and ideas are denoted
+    by the following tags
+<ul>
+    <li> Procedural Fact </li>
+    <li> Defendent Claim</li>
+</ul>
+</p>
+<p> SEBI perspective explored the arguments made by the lawyers on behalf of SEBI and their arguments are denoted by the
+    following tags
+<ul>
+    <li> Material Facts </li>
+</ul>
+</p>
+<p>Judges perspective expolred the overseeing authority of the case and their tags are marked with
+<ul>
+    <li>Subjective Observation </li>
+    <li> Penalty </li>
+
+</ul>
+
+</p>
+
+
+<!-- predMappingScheme = [
+"material fact", # [y]
+"vioaltion", # [y] 
+"procedural fact",# [n]
+"allegations",# [n]
+"issues framed",# [y]
+"statuatory fact",# [n]
+"defendent claim", #[n]
+"subj observation",# [y]
+"rel fact", #[n]
+"penalty"# [y]
+] -->
+{% endblock %}

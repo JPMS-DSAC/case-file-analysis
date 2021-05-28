@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+<h2>{% block title %} Lawyer's Perspective {% endblock %}</h2>
+
+{% block content %}
+<h2> Lawyer's Perspective </h2>
+<table>
+    <tr>
+        {% for col in column_names %}
+        <th>{{col}}</th>
+        {% endfor %}
+    </tr>
+    {% for row in row_data %}
+    <tr>
+        {% for col, row_ in zip(column_names, row) %}
+     
+        <td>{{row_}}</td>
+        {% endfor %}
+    </tr>
+    {% endfor %}
+
+</table>
+{% endblock %}
